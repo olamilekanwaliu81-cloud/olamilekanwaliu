@@ -841,7 +841,7 @@
       transform: translateY(-50%);
       display: flex; flex-direction: column; gap: 10px; align-items: center;
     }
-    .fiverr-float, .whatsapp-float, .linkedin-float, .gmail-float {
+    .fiverr-float, .whatsapp-float, .linkedin-float, .gmail-float, .upwork-float {
       border-radius: 50%;
       width: 44px; height: 44px;
       display: flex; align-items: center; justify-content: center;
@@ -887,6 +887,16 @@
     @keyframes pulse-li {
       0%, 100% { box-shadow: 0 4px 16px rgba(10,102,194,0.4); }
       50% { box-shadow: 0 4px 28px rgba(10,102,194,0.65); }
+    }
+    .upwork-float {
+      background: #14A800;
+      box-shadow: 0 4px 16px rgba(20,168,0,0.4);
+      animation: pulse-up 2.5s infinite 2s;
+    }
+    .upwork-float:hover { transform: scale(1.12); box-shadow: 0 8px 24px rgba(20,168,0,0.6); }
+    @keyframes pulse-up {
+      0%, 100% { box-shadow: 0 4px 16px rgba(20,168,0,0.4); }
+      50% { box-shadow: 0 4px 28px rgba(20,168,0,0.65); }
     }
 
     /* ===== FOOTER ===== */
@@ -1582,6 +1592,11 @@
       <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
     </svg>
   </a>
+  <a href="https://www.upwork.com/freelancers/~01f2ced3207166131d?mp_source=share" class="upwork-float" target="_blank" aria-label="Upwork Profile" title="Hire me on Upwork">
+    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="#fff">
+      <path d="M18.561 13.158c-1.102 0-2.135-.467-3.074-1.227l.228-1.076.008-.042c.207-1.143.849-3.06 2.839-3.06a2.705 2.705 0 0 1 2.703 2.703 2.707 2.707 0 0 1-2.702 2.702zm0-8.14c-2.539 0-4.51 1.649-5.31 4.366-1.22-1.834-2.148-4.036-2.687-5.892H7.828v7.112a2.551 2.551 0 0 1-2.547 2.548 2.55 2.55 0 0 1-2.545-2.548V3.492H0v7.112a5.081 5.081 0 0 0 5.281 5.086 5.082 5.082 0 0 0 5.283-5.086V9.416c.529 1.107 1.182 2.229 1.974 3.221l-1.673 7.873h2.797l1.213-5.71c1.063.679 2.285 1.109 3.686 1.109 3 0 5.439-2.452 5.439-5.45 0-3-2.439-5.441-5.439-5.441z"/>
+    </svg>
+  </a>
 </div>
 
 <!-- ===== NAV ===== -->
@@ -1601,8 +1616,8 @@
       <li><a href="#contact">Contact</a></li>
     </ul>
     <div class="nav-cta">
-      <a href="https://www.fiverr.com/bizzerro" class="nav-wa" target="_blank">
-        Fiverr →
+      <a href="https://discoverybooking.netlify.app/" class="nav-wa" target="_blank">
+        Book a Call →
       </a>
     </div>
     <button class="hamburger" id="hamburger">
@@ -1636,8 +1651,8 @@
       </h1>
       <p class="hero-sub fade-up d2">From ghostwriting to formatting, publishing, and sales pages, I help authors bring their ideas to life and position them for visibility.</p>
       <div class="hero-ctas fade-up d3">
-        <a href="#pricing" class="btn-primary">Start Your Book Project →</a>
-        <a href="https://www.fiverr.com/bizzerro" class="btn-fiverr" target="_blank">Order on Fiverr →</a>
+        <a href="https://discoverybooking.netlify.app/" target="_blank" class="btn-primary">Book a Free Consultation →</a>
+        <a href="#contact" class="btn-fiverr">Send a Message →</a>
       </div>
       <div class="hero-trust fade-up d4">
         <div class="trust-avatars">
@@ -1818,7 +1833,7 @@
     </div>
     <div class="problem-cta-strip">
       <p class="problem-cta-text">"That is exactly where I come in, to bridge every single one of these gaps for you."</p>
-      <a href="https://www.fiverr.com/bizzerro" class="btn-fiverr" target="_blank">Order on Fiverr →</a>
+      <a href="#contact" class="btn-fiverr">Get Started →</a>
     </div>
   </div>
 </section>
@@ -2646,10 +2661,24 @@
       <!-- Left: info -->
       <div class="contact-info">
         <div class="contact-info-item">
-          <div class="contact-info-icon" style="font-family:'Outfit',sans-serif;font-weight:800;font-size:14px;color:#1DBF73;">Fi</div>
+          <div class="contact-info-icon">&#128231;</div>
           <div>
-            <div class="contact-info-label">Fiverr</div>
-            <div class="contact-info-value"><a href="https://www.fiverr.com/bizzerro" target="_blank">Order directly on Fiverr</a></div>
+            <div class="contact-info-label">Email</div>
+            <div class="contact-info-value"><a href="mailto:hello@olamilekanwaliu.com">hello@olamilekanwaliu.com</a></div>
+          </div>
+        </div>
+        <div class="contact-info-item">
+          <div class="contact-info-icon" style="font-family:'Outfit',sans-serif;font-weight:800;font-size:14px;color:#14A800;">&#128197;</div>
+          <div>
+            <div class="contact-info-label">Free Consultation</div>
+            <div class="contact-info-value"><a href="https://discoverybooking.netlify.app/" target="_blank">Book a call &rarr;</a></div>
+          </div>
+        </div>
+        <div class="contact-info-item">
+          <div class="contact-info-icon">&#128179;</div>
+          <div>
+            <div class="contact-info-label">Flexible Ordering &amp; Payment</div>
+            <div class="contact-info-value">Order and pay your way &mdash; Fiverr, Upwork, or direct. All currencies accepted.</div>
           </div>
         </div>
         <div class="contact-info-item">
@@ -2663,7 +2692,7 @@
           <div class="contact-info-icon">📚</div>
           <div>
             <div class="contact-info-label">Services</div>
-            <div class="contact-info-value">Ghostwriting · Formatting · Publishing · Sales Pages</div>
+            <div class="contact-info-value">Ghostwriting · Formatting · Publishing · Global Reach</div>
           </div>
         </div>
         <div class="contact-info-item">
@@ -2800,7 +2829,7 @@
     <h2 class="cta-title">Ready to Turn Your Idea Into a<br><em>Published Book?</em></h2>
     <p class="cta-sub">Let us work together to bring your book from idea to reality, and position it properly for readers who are waiting for your message.</p>
     <div class="cta-buttons">
-      <a href="https://www.fiverr.com/bizzerro" class="btn-fiverr" target="_blank" style="font-size:16px;padding:16px 34px;">Order on Fiverr →</a>
+      <a href="https://discoverybooking.netlify.app/" target="_blank" class="btn-fiverr" style="font-size:16px;padding:16px 34px;">Book a Free Consultation →</a>
       <a href="#contact" class="btn-outline" style="color:var(--cream);border-color:rgba(253,250,245,0.3);font-size:16px;padding:16px 34px;">Send a Message →</a>
     </div>
     <p class="cta-note">Free consultation available, no commitment required</p>
@@ -2824,7 +2853,7 @@
         <a href="#contact">Contact</a>
         <a href="privacy.html">Privacy Policy</a>
       </div>
-      <a href="https://www.fiverr.com/bizzerro" class="nav-wa" target="_blank">Fiverr →</a>
+      <a href="https://discoverybooking.netlify.app/" class="nav-wa" target="_blank">Book a Call →</a>
     </div>
     <div class="footer-bottom">
       <p class="footer-copy">© <span id="footerYear">2026</span> Olamilekanwaliu. All rights reserved. Book Publishing and Ghostwriting Services.</p>
