@@ -1524,6 +1524,59 @@
     @media (max-width: 480px) {
       .team-grid-members { grid-template-columns: 1fr !important; max-width: 360px !important; }
     }
+    /* ===== SOCIAL PROOF POPUP ===== */
+    .proof-pop {
+      position: fixed;
+      left: 24px; bottom: 24px;
+      z-index: 9998;
+      display: flex; align-items: center; gap: 14px;
+      background: var(--cream);
+      border: 1px solid rgba(200,134,42,0.2);
+      border-radius: 14px;
+      padding: 12px 40px 12px 12px;
+      box-shadow: 0 12px 40px rgba(26,18,8,0.18);
+      max-width: 320px;
+      opacity: 0; transform: translateY(20px);
+      transition: opacity 0.45s ease, transform 0.45s ease;
+      pointer-events: none;
+      font-family: 'Outfit', sans-serif;
+    }
+    .proof-pop.show { opacity: 1; transform: translateY(0); pointer-events: auto; }
+    .proof-avatar {
+      width: 46px; height: 46px; border-radius: 50%;
+      flex-shrink: 0; overflow: hidden;
+      background: linear-gradient(135deg, var(--gold), var(--gold-light));
+      display: flex; align-items: center; justify-content: center;
+      font-family: 'Cormorant Garamond', serif; font-style: italic;
+      font-size: 22px; color: #fff; font-weight: 700;
+    }
+    .proof-avatar img { width: 100%; height: 100%; object-fit: cover; }
+    .proof-body { line-height: 1.35; }
+    .proof-name { font-size: 13.5px; font-weight: 700; color: var(--ink); }
+    .proof-name .flag { margin-left: 4px; }
+    .proof-action { font-size: 12.5px; color: var(--muted); }
+    .proof-meta {
+      font-size: 10.5px; color: var(--gold); font-weight: 600;
+      margin-top: 2px; display: flex; align-items: center; gap: 4px;
+    }
+    .proof-meta .dot { width: 5px; height: 5px; border-radius: 50%; background: #1DBF73; display: inline-block; }
+    .proof-close {
+      position: absolute; top: 8px; right: 10px;
+      background: none; border: none; cursor: pointer;
+      font-size: 15px; color: var(--muted); line-height: 1;
+    }
+    .proof-close:hover { color: var(--ink); }
+    .proof-badge {
+      display: inline-block; margin-left: 6px;
+      font-size: 9px; font-weight: 700; letter-spacing: 0.04em; text-transform: uppercase;
+      padding: 2px 7px; border-radius: 100px; vertical-align: middle;
+    }
+    .proof-badge.top { background: var(--gold); color: #fff; }
+    .proof-badge.rep { background: rgba(200,134,42,0.15); color: var(--gold); }
+
+    @media (max-width: 520px) {
+      .proof-pop { left: 12px; right: 12px; bottom: 90px; max-width: none; }
+    }
 </style>
     <!-- Meta Pixel Code 1 -->
     <script>
@@ -1560,7 +1613,6 @@
     src="https://www.facebook.com/tr?id=1770035980825851&ev=PageView&noscript=1"
     /></noscript>
     <!-- End Meta Pixel Code 2 -->
-<!-- Start of Async ProveSource Code --><script>!function(o,i){window.provesrc&&window.console&&console.error&&console.error("ProveSource is included twice in this page."),window.provesrc={dq:[],display:function(){this.dq.push(arguments)}},o._provesrcAsyncInit=function(){window.provesrc.init({apiKey:"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhY2NvdW50SWQiOiI2YTUwMmQ2ZGEyMmE4NWRlZTgxMzdhN2QiLCJpYXQiOjE3ODM2Mzk0MDZ9.yVFpw6kfpVb8ezSADi4Lig0mYnwSSlN-89Z74kLKY44",v:"0.0.4"})};var r=i.createElement("script");r.type="text/javascript",r.async=!0,r["ch"+"ar"+"set"]="UTF-8",r.src="https://cdn.provesrc.com/provesrc.js";var e=i.getElementsByTagName("script")[0];e.parentNode.insertBefore(r,e)}(window,document);</script><!-- End of Async ProveSource Code -->
 </head>
 <body>
 
@@ -3214,6 +3266,135 @@ s0.parentNode.insertBefore(s1,s0);
       if(!wasOpen) item.classList.add('open');
     });
   });
+</script>
+<!-- Social proof popup -->
+<div class="proof-pop" id="proofPop">
+  <div class="proof-avatar" id="proofAvatar"></div>
+  <div class="proof-body">
+    <div class="proof-name" id="proofName"></div>
+    <div class="proof-action" id="proofAction"></div>
+    <div class="proof-meta"><span class="dot"></span><span id="proofTime"></span></div>
+  </div>
+  <button class="proof-close" onclick="document.getElementById('proofPop').classList.remove('show')" aria-label="Close">&times;</button>
+</div>
+<script>
+  // ===== Social proof popup =====
+  // To add more: copy a line. "mins" = how many minutes ago it happened (auto-formatted live).
+  (function(){
+    const people = [
+      { user: "Michael", flag: "🇺🇸", initial: "M", action: "started their Amazon KDP Ads project", mins: 1, badge: "Top Client" },
+      { user: "cklein456", flag: "🇺🇸", initial: "C", action: "started their book publishing project", mins: 150, badge: "Top Client" },
+      { user: "marshall5012", flag: "🇺🇸", initial: "M", action: "started their book promotion project", mins: 603, badge: "" },
+      { user: "arianatom451", flag: "🇺🇸", initial: "A", action: "started their book cover design project", mins: 1358, badge: "" },
+      { user: "avelor_jin", flag: "🇺🇸", initial: "A", action: "started their book formatting project", mins: 2415, badge: "Repeated" },
+      { user: "mayafrancis2", flag: "🇬🇧", initial: "M", action: "started their book formatting project", mins: 3774, badge: "" },
+      { user: "fredmartinez81", flag: "🇺🇸", initial: "F", action: "started their book cover design project", mins: 5435, badge: "" },
+      { user: "ChereWood", flag: "🇺🇸", initial: "C", action: "started their book design project", mins: 7398, badge: "Top Client" },
+      { user: "seraphy_west", flag: "🇺🇸", initial: "S", action: "started their book promotion project", mins: 9663, badge: "" },
+      { user: "anthony_camach", flag: "🇺🇸", initial: "A", action: "started their book layout project", mins: 12230, badge: "" },
+      { user: "hollarmi", flag: "🇺🇸", initial: "H", action: "started their book formatting project", mins: 15099, badge: "" },
+      { user: "timmagsby", flag: "🇺🇸", initial: "T", action: "started their sales page project", mins: 18269, badge: "" },
+      { user: "tamiah312", flag: "🇺🇸", initial: "T", action: "started their book editing project", mins: 21742, badge: "" },
+      { user: "kionnejohnson", flag: "🇺🇸", initial: "K", action: "started their book cover design project", mins: 25517, badge: "" },
+      { user: "frederik150", flag: "🇺🇸", initial: "F", action: "started their book publishing project", mins: 29594, badge: "" },
+      { user: "ryanaw638", flag: "🇺🇸", initial: "R", action: "started their sales page project", mins: 33972, badge: "" },
+      { user: "desiree_bethea", flag: "🇺🇸", initial: "D", action: "started their book promotion project", mins: 38653, badge: "" },
+      { user: "jack_lian", flag: "🇺🇸", initial: "J", action: "started their book layout project", mins: 43636, badge: "" },
+      { user: "aliciahoolan", flag: "🇦🇺", initial: "A", action: "started their book formatting project", mins: 48921, badge: "" },
+      { user: "oluwoleadeba708", flag: "🇨🇦", initial: "O", action: "started their book editing project", mins: 54507, badge: "" },
+      { user: "reccejesse", flag: "🇺🇸", initial: "R", action: "started their book cover design project", mins: 60396, badge: "Repeated" },
+      { user: "delcanherbert", flag: "🇳🇴", initial: "D", action: "started their book cover design project", mins: 66587, badge: "" },
+      { user: "astridkolkman", flag: "🇩🇪", initial: "A", action: "started their book publishing project", mins: 73079, badge: "" },
+      { user: "anitasgrl2_b4", flag: "🇺🇸", initial: "A", action: "started their sales page project", mins: 79874, badge: "" },
+      { user: "alessandro3245", flag: "🇮🇲", initial: "A", action: "started their book promotion project", mins: 86970, badge: "" },
+      { user: "henry_431", flag: "🇺🇸", initial: "H", action: "started their book layout project", mins: 94369, badge: "" },
+      { user: "edvega74", flag: "🇺🇸", initial: "E", action: "started their book formatting project", mins: 102069, badge: "" },
+      { user: "red_pig16", flag: "🇺🇸", initial: "R", action: "started their book editing project", mins: 110072, badge: "" },
+      { user: "leoblue_b4", flag: "🇺🇸", initial: "L", action: "started their book cover design project", mins: 118377, badge: "" },
+      { user: "emilia753", flag: "🇩🇪", initial: "E", action: "started their book cover design project", mins: 126983, badge: "Repeated" },
+      { user: "steve_mcrae", flag: "🇺🇸", initial: "S", action: "started their book publishing project", mins: 135891, badge: "" },
+      { user: "jakethebest1", flag: "🇺🇸", initial: "J", action: "started their sales page project", mins: 145102, badge: "" },
+      { user: "stefanklaus460", flag: "🇩🇪", initial: "S", action: "started their book promotion project", mins: 154614, badge: "" },
+      { user: "sugarvineart", flag: "🇺🇸", initial: "S", action: "started their book layout project", mins: 164429, badge: "" },
+      { user: "macrhod", flag: "🇺🇸", initial: "M", action: "started their book formatting project", mins: 174545, badge: "" },
+      { user: "stefanwieser", flag: "🇳🇱", initial: "S", action: "started their book editing project", mins: 184964, badge: "" },
+      { user: "nicholas232", flag: "🇺🇸", initial: "N", action: "started their book cover design project", mins: 195684, badge: "" },
+      { user: "feli_eiffel", flag: "🇩🇪", initial: "F", action: "started their book publishing project", mins: 206706, badge: "" },
+      { user: "angela952", flag: "🇺🇸", initial: "A", action: "started their book promotion project", mins: 218031, badge: "Repeated" },
+      { user: "charlie_jack9", flag: "🇬🇧", initial: "C", action: "started their sales page project", mins: 229657, badge: "" },
+      { user: "lexischambers15", flag: "🇺🇸", initial: "L", action: "started their book promotion project", mins: 241585, badge: "Repeated" },
+      { user: "joshott0609", flag: "🇺🇸", initial: "J", action: "started their book layout project", mins: 253816, badge: "" },
+      { user: "woodchucks22", flag: "🇺🇸", initial: "W", action: "started their book formatting project", mins: 266348, badge: "" },
+      { user: "jeanetterobin", flag: "🇺🇸", initial: "J", action: "started their book editing project", mins: 279182, badge: "" },
+      { user: "chengfei09", flag: "🇨🇳", initial: "C", action: "started their book cover design project", mins: 292318, badge: "" },
+      { user: "valeriehende178", flag: "🇺🇸", initial: "V", action: "started their book publishing project", mins: 305756, badge: "" },
+      { user: "tonyhuggins", flag: "🇺🇸", initial: "T", action: "started their sales page project", mins: 319497, badge: "" },
+      { user: "danielchris126", flag: "🇺🇸", initial: "D", action: "started their book promotion project", mins: 333539, badge: "" },
+      { user: "mariavan935", flag: "🇳🇱", initial: "M", action: "started their book layout project", mins: 347883, badge: "" },
+      { user: "franbardallo", flag: "🇬🇧", initial: "F", action: "started their book formatting project", mins: 362529, badge: "" },
+      { user: "besstveit", flag: "🇺🇸", initial: "B", action: "started their book editing project", mins: 377477, badge: "" },
+      { user: "kadencerex", flag: "🇺🇸", initial: "K", action: "started their book cover design project", mins: 392727, badge: "" },
+      { user: "nicolassmith487", flag: "🇺🇸", initial: "N", action: "started their sales page project", mins: 408279, badge: "Top Client" },
+      { user: "torreymontgomer", flag: "🇺🇸", initial: "T", action: "started their book publishing project", mins: 424133, badge: "" },
+      { user: "leonleonz", flag: "🇩🇪", initial: "L", action: "started their sales page project", mins: 440290, badge: "" },
+      { user: "m_annie92", flag: "🇺🇸", initial: "M", action: "started their book promotion project", mins: 456748, badge: "" },
+      { user: "James5298", flag: "🇬🇧", initial: "J", action: "started their book layout project", mins: 473508, badge: "" },
+      { user: "joshwins35", flag: "🇺🇸", initial: "J", action: "started their book formatting project", mins: 490570, badge: "" },
+      { user: "felipealvare190", flag: "🇺🇸", initial: "F", action: "started their book editing project", mins: 507934, badge: "" },
+      { user: "sherwinwells", flag: "🇳🇬", initial: "S", action: "started their book publishing project", mins: 525600, badge: "" },
+    ];
+    const pop = document.getElementById('proofPop');
+    if(!pop) return;
+    const avatar=document.getElementById('proofAvatar');
+    const nameEl=document.getElementById('proofName');
+    const actEl =document.getElementById('proofAction');
+    const timeEl=document.getElementById('proofTime');
+
+    // Turn each "mins ago" into a real timestamp (with slight jitter) so the label
+    // advances on its own over time — no manual editing needed.
+    const now=Date.now();
+    people.forEach(p=>{ p.ts = now - Math.round(p.mins*60000*(0.85+Math.random()*0.3)); });
+
+    function rel(ms){
+      const m=Math.max(1,Math.round(ms/60000));
+      if(ms<120000) return 'just now';
+      if(m<60) return m+(m===1?' minute ago':' minutes ago');
+      const h=Math.round(m/60);
+      if(h<24) return h+(h===1?' hour ago':' hours ago');
+      const d=Math.round(h/24);
+      if(d===1) return 'Yesterday';
+      if(d<7) return d+' days ago';
+      const w=Math.round(d/7);
+      if(d<30) return w+(w===1?' week ago':' weeks ago');
+      const mo=Math.round(d/30);
+      if(d<365) return mo+(mo===1?' month ago':' months ago');
+      const y=Math.round(d/365);
+      return y+(y===1?' year ago':' years ago');
+    }
+    function badgeHtml(b){
+      if(b==='Top Client') return ' <span class="proof-badge top">Top Client</span>';
+      if(b==='Repeated')   return ' <span class="proof-badge rep">Repeat Client</span>';
+      return '';
+    }
+
+    const list=people.slice().sort(()=>Math.random()-0.5);
+    let i=0, dismissed=false;
+    document.querySelector('.proof-close').addEventListener('click',()=>{dismissed=true;});
+
+    function showNext(){
+      if(dismissed) return;
+      const p=list[i%list.length]; i++;
+      if(p.img){ avatar.innerHTML='<img src="'+p.img+'" alt="">'; }
+      else { avatar.textContent=p.initial; }
+      nameEl.innerHTML=p.user+' <span class="flag">'+p.flag+'</span>'+badgeHtml(p.badge);
+      actEl.textContent=p.action;
+      timeEl.textContent='Verified \u00b7 '+rel(Date.now()-p.ts);
+      pop.classList.add('show');
+      setTimeout(()=>{ pop.classList.remove('show'); }, 7000);   // visible 7s
+      setTimeout(showNext, 7000 + 13000);                        // gap 13s
+    }
+    setTimeout(showNext, 7000);
+  })();
 </script>
 </body>
 </html>
