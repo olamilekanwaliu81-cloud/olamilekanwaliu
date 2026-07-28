@@ -1580,20 +1580,20 @@
     /* ===== HERO COVER CAROUSEL ===== */
     .hero-cover-carousel {
       position: relative;
-      display: flex; gap: 18px; justify-content: center; align-items: flex-start;
+      display: flex; gap: 14px; justify-content: center; align-items: flex-start;
       height: 500px; overflow: hidden; width: 100%;
       -webkit-mask-image: linear-gradient(180deg, transparent, #000 12%, #000 88%, transparent);
               mask-image: linear-gradient(180deg, transparent, #000 12%, #000 88%, transparent);
     }
     .hero-cover-col { display: flex; flex-direction: column; gap: 18px; flex-shrink: 0; }
-    .hero-cover-col.up   { animation: hero-cov-up 34s linear infinite; }
-    .hero-cover-col.down { animation: hero-cov-down 34s linear infinite; }
+    .hero-cover-col.up   { animation: hero-cov-up 38s linear infinite; }
+    .hero-cover-col.down { animation: hero-cov-down 38s linear infinite; }
     .hero-cover-carousel:hover .hero-cover-col { animation-play-state: paused; }
     .hero-cov-item {
       border-radius: 10px; overflow: hidden;
       box-shadow: 0 16px 40px rgba(26,18,8,0.22);
     }
-    .hero-cov-item img { width: 195px; height: auto; display: block; }
+    .hero-cov-item img { width: 150px; height: auto; display: block; }
     @keyframes hero-cov-up   { from { transform: translateY(0); }      to { transform: translateY(-50%); } }
     @keyframes hero-cov-down { from { transform: translateY(-50%); }   to { transform: translateY(0); } }
     .hero-cover-badge {
@@ -1609,9 +1609,12 @@
       .hero-cover-carousel { height: 380px; }
       .hero-cov-item img { width: 150px; }
     }
+    @media (max-width: 900px) {
+      #hcCol3 { display: none; }
+    }
     @media (max-width: 480px) {
-      .hero-cover-carousel { height: 320px; gap: 12px; }
-      .hero-cov-item img { width: 130px; }
+      .hero-cover-carousel { height: 320px; gap: 10px; }
+      .hero-cov-item img { width: 120px; }
       .hero-cover-badge { width: 74px; height: 74px; }
       .hero-cover-badge .num { font-size: 19px; }
     }
@@ -1837,6 +1840,7 @@
       <div class="hero-cover-carousel" id="heroCarousel">
         <div class="hero-cover-col up" id="hcCol1"></div>
         <div class="hero-cover-col down" id="hcCol2"></div>
+        <div class="hero-cover-col up" id="hcCol3"></div>
         <div class="hero-cover-badge">
           <span class="num">230+</span>
           <span class="lbl">Books Published</span>
@@ -3434,20 +3438,21 @@ s0.parentNode.insertBefore(s1,s0);
   })();
 </script>
 <script>
-  // ===== Hero cover carousel (reuses portfolio images, seamless vertical loop) =====
+  // ===== Hero cover carousel (3-column vertical collage, reuses portfolio images) =====
   (function(){
-    const col1=document.getElementById('hcCol1'), col2=document.getElementById('hcCol2');
-    if(!col1||!col2) return;
+    const cols=[document.getElementById('hcCol1'),document.getElementById('hcCol2'),document.getElementById('hcCol3')];
+    if(cols.some(x=>!x)) return;
     function run(){
-      const src=[...document.querySelectorAll('.pf-card[data-cat*="cover"] img, .pf-card[data-cat*="launch"] img, .pf-card[data-cat*="mockup"] img')];
-      if(!src.length){ return; }
-      const half=Math.ceil(src.length/2);
-      const setA=src.slice(0,half), setB=src.slice(half).concat(src.slice(0,1));
-      function fill(col,imgs){
+      const src=[...document.querySelectorAll('.pf-card img')];
+      if(!src.length) return;
+      // spread images round-robin into 3 buckets
+      const buckets=[[],[],[]];
+      src.forEach((im,i)=>buckets[i%3].push(im));
+      buckets.forEach((imgs,ci)=>{
+        const col=cols[ci];
         const make=()=>imgs.forEach(im=>{ const d=document.createElement('div'); d.className='hero-cov-item'; const g=document.createElement('img'); g.src=im.src; g.alt=im.alt||''; g.loading='lazy'; d.appendChild(g); col.appendChild(d); });
-        make(); make(); // duplicate for seamless 50% loop
-      }
-      fill(col1,setA); fill(col2,setB);
+        make(); make(); // duplicate for seamless loop
+      });
     }
     if(document.readyState==='complete') run();
     else window.addEventListener('load', run);
