@@ -1577,6 +1577,44 @@
     @media (max-width: 520px) {
       .proof-pop { left: 12px; right: 12px; bottom: 90px; max-width: none; }
     }
+    /* ===== HERO COVER CAROUSEL ===== */
+    .hero-cover-carousel {
+      position: relative;
+      display: flex; gap: 18px; justify-content: center; align-items: flex-start;
+      height: 500px; overflow: hidden; width: 100%;
+      -webkit-mask-image: linear-gradient(180deg, transparent, #000 12%, #000 88%, transparent);
+              mask-image: linear-gradient(180deg, transparent, #000 12%, #000 88%, transparent);
+    }
+    .hero-cover-col { display: flex; flex-direction: column; gap: 18px; flex-shrink: 0; }
+    .hero-cover-col.up   { animation: hero-cov-up 34s linear infinite; }
+    .hero-cover-col.down { animation: hero-cov-down 34s linear infinite; }
+    .hero-cover-carousel:hover .hero-cover-col { animation-play-state: paused; }
+    .hero-cov-item {
+      border-radius: 10px; overflow: hidden;
+      box-shadow: 0 16px 40px rgba(26,18,8,0.22);
+    }
+    .hero-cov-item img { width: 195px; height: auto; display: block; }
+    @keyframes hero-cov-up   { from { transform: translateY(0); }      to { transform: translateY(-50%); } }
+    @keyframes hero-cov-down { from { transform: translateY(-50%); }   to { transform: translateY(0); } }
+    .hero-cover-badge {
+      position: absolute; bottom: 24px; right: 0;
+      width: 94px; height: 94px; border-radius: 50%;
+      background: linear-gradient(135deg, var(--gold), var(--gold-light));
+      color: #fff; display: flex; flex-direction: column; align-items: center; justify-content: center;
+      box-shadow: 0 10px 30px rgba(200,134,42,0.4); z-index: 3; text-align: center;
+    }
+    .hero-cover-badge .num { font-family: 'Cormorant Garamond', serif; font-weight: 700; font-size: 24px; line-height: 1; }
+    .hero-cover-badge .lbl { font-size: 9px; font-weight: 600; letter-spacing: 0.04em; text-transform: uppercase; margin-top: 3px; }
+    @media (max-width: 900px) {
+      .hero-cover-carousel { height: 380px; }
+      .hero-cov-item img { width: 150px; }
+    }
+    @media (max-width: 480px) {
+      .hero-cover-carousel { height: 320px; gap: 12px; }
+      .hero-cov-item img { width: 130px; }
+      .hero-cover-badge { width: 74px; height: 74px; }
+      .hero-cover-badge .num { font-size: 19px; }
+    }
 </style>
     <!-- Meta Pixel Code 1 -->
     <script>
@@ -1796,20 +1834,12 @@
       </div>
     </div>
     <div class="hero-visual fade-up d2">
-      <div class="book-stack">
-        <div class="book-spine book-3"></div>
-        <div class="book-spine book-2"></div>
-        <div class="book-spine book-1">
-          <div class="book-1-inner">
-            <div class="book-ornament"></div>
-            <div class="book-title-text">Your Story Deserves to Be Told</div>
-            <div class="book-author-text">Olamilekanwaliu</div>
-            <div class="book-ornament"></div>
-          </div>
-        </div>
-        <div class="star-badge">
-          <span class="num">100%</span>
-          <span class="lbl">Book Done</span>
+      <div class="hero-cover-carousel" id="heroCarousel">
+        <div class="hero-cover-col up" id="hcCol1"></div>
+        <div class="hero-cover-col down" id="hcCol2"></div>
+        <div class="hero-cover-badge">
+          <span class="num">230+</span>
+          <span class="lbl">Books Published</span>
         </div>
       </div>
     </div>
@@ -2273,6 +2303,7 @@
     </div>
   </div>
 </section>
+
 
 <!-- Lightbox -->
 <div class="pf-lightbox" id="pfLightbox">
@@ -3400,6 +3431,26 @@ s0.parentNode.insertBefore(s1,s0);
       setTimeout(showNext, 7000 + 13000);                        // gap 13s
     }
     setTimeout(showNext, 7000);
+  })();
+</script>
+<script>
+  // ===== Hero cover carousel (reuses portfolio images, seamless vertical loop) =====
+  (function(){
+    const col1=document.getElementById('hcCol1'), col2=document.getElementById('hcCol2');
+    if(!col1||!col2) return;
+    function run(){
+      const src=[...document.querySelectorAll('.pf-card[data-cat*="cover"] img, .pf-card[data-cat*="launch"] img, .pf-card[data-cat*="mockup"] img')];
+      if(!src.length){ return; }
+      const half=Math.ceil(src.length/2);
+      const setA=src.slice(0,half), setB=src.slice(half).concat(src.slice(0,1));
+      function fill(col,imgs){
+        const make=()=>imgs.forEach(im=>{ const d=document.createElement('div'); d.className='hero-cov-item'; const g=document.createElement('img'); g.src=im.src; g.alt=im.alt||''; g.loading='lazy'; d.appendChild(g); col.appendChild(d); });
+        make(); make(); // duplicate for seamless 50% loop
+      }
+      fill(col1,setA); fill(col2,setB);
+    }
+    if(document.readyState==='complete') run();
+    else window.addEventListener('load', run);
   })();
 </script>
 </body>
