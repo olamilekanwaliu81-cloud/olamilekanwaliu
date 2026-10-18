@@ -211,6 +211,25 @@
   .foot-links a:hover{color:rgba(253,250,245,.85)}
   .foot-copy{font-size:12px;color:rgba(253,250,245,.3);margin-top:20px}
   .foot-logo .logo-rest{color:rgba(253,250,245,.75)}
+    /* case study gallery */
+    .pf-filters{display:flex;flex-wrap:wrap;gap:10px;justify-content:center;margin:30px 0 4px}
+    .pf-filter{background:rgba(253,250,245,.08);color:rgba(253,250,245,.8);border:1px solid rgba(253,250,245,.15);font-family:inherit;font-size:13px;font-weight:600;padding:9px 18px;border-radius:100px;cursor:pointer;transition:all .2s}
+    .pf-filter:hover{background:rgba(200,134,42,.2);color:var(--gold-light)}
+    .pf-filter.active{background:var(--gold);color:#fff;border-color:var(--gold)}
+    .cs-grid{display:grid;grid-template-columns:1fr 1fr;gap:22px;max-width:1000px;margin:34px auto 0}
+    .cs-card{display:block;text-decoration:none;background:var(--cream);border:1px solid rgba(200,134,42,.14);border-radius:16px;overflow:hidden;transition:transform .3s,box-shadow .3s}
+    .cs-card:hover{transform:translateY(-5px);box-shadow:0 18px 46px rgba(0,0,0,.4)}
+    .cs-card.hidden{display:none}
+    .cs-img{position:relative;overflow:hidden;line-height:0}
+    .cs-img img{width:100%;height:auto;display:block;transition:transform .45s}
+    .cs-card:hover .cs-img img{transform:scale(1.04)}
+    .cs-badge{position:absolute;top:12px;right:12px;background:rgba(26,18,8,.82);color:var(--cream);font-size:10px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;padding:5px 11px;border-radius:100px}
+    .cs-bar{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:15px 20px}
+    .cs-meta{display:flex;flex-direction:column;gap:3px}
+    .cs-genre{font-size:10px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--gold)}
+    .cs-title{font-family:'Cormorant Garamond',serif;font-size:20px;font-weight:700;color:var(--ink);line-height:1.2}
+    .cs-view{font-size:12.5px;font-weight:700;color:var(--gold);white-space:nowrap}
+    @media(max-width:760px){.cs-grid{grid-template-columns:1fr;max-width:460px}}
 </style>
 </head>
 <body>
@@ -465,6 +484,91 @@
   </div>
 </section>
 
+<!-- CASE STUDY GALLERY -->
+<section style="background:var(--ink);color:var(--cream)">
+  <div class="container">
+    <div style="text-align:center">
+      <span class="chip" style="background:rgba(200,134,42,.15);border-color:rgba(200,134,42,.35);color:var(--gold-light)">The Full Library</span>
+      <h2 class="sec-head" style="margin-top:14px;color:var(--cream)">Browse Every <em>Formatting Project</em></h2>
+      <p class="sec-sub" style="color:rgba(253,250,245,.65);margin:0 auto">Real Amazon KDP paperback, hardcover and Kindle projects across many genres. Filter by type and click any project to open the full case study.</p>
+    </div>
+    <div class="pf-filters">
+      <button class="pf-filter active" data-filter="all">All Work</button>
+      <button class="pf-filter" data-filter="faith">Faith &amp; Christian</button>
+      <button class="pf-filter" data-filter="workbook">Workbooks</button>
+      <button class="pf-filter" data-filter="nonfiction">Memoir &amp; Nonfiction</button>
+      <button class="pf-filter" data-filter="fiction">Fiction &amp; Poetry</button>
+      <button class="pf-filter" data-filter="children">Children's</button>
+    </div>
+    <div class="cs-grid">
+      <a class="cs-card" data-cat="faith" href="samples/judge-not-case-study.pdf" target="_blank" rel="noopener" aria-label="View Judge Not case study (PDF)">
+        <div class="cs-img"><span class="cs-badge">Case Study</span><img src="images/portfolio/judge-not.jpg" alt="Judge Not — Christian Nonfiction Amazon KDP book formatting by Olamilekanwaliu" loading="lazy" decoding="async" width="1200" height="721" /></div>
+        <div class="cs-bar"><span class="cs-meta"><span class="cs-genre">Christian Nonfiction</span><span class="cs-title">Judge Not</span></span><span class="cs-view">View PDF &rarr;</span></div>
+      </a>
+      <a class="cs-card" data-cat="children" href="samples/soul-sneakers-case-study.pdf" target="_blank" rel="noopener" aria-label="View Soul Sneakers: Passport to Play case study (PDF)">
+        <div class="cs-img"><span class="cs-badge">Case Study</span><img src="images/portfolio/soul-sneakers.jpg" alt="Soul Sneakers: Passport to Play — Children's Book Amazon KDP book formatting by Olamilekanwaliu" loading="lazy" decoding="async" width="1200" height="721" /></div>
+        <div class="cs-bar"><span class="cs-meta"><span class="cs-genre">Children's Book</span><span class="cs-title">Soul Sneakers: Passport to Play</span></span><span class="cs-view">View PDF &rarr;</span></div>
+      </a>
+      <a class="cs-card" data-cat="nonfiction" href="samples/moving-to-spain-case-study.pdf" target="_blank" rel="noopener" aria-label="View Moving to Spain With Children case study (PDF)">
+        <div class="cs-img"><span class="cs-badge">Case Study</span><img src="images/portfolio/moving-to-spain.jpg" alt="Moving to Spain With Children — Relocation Guide Amazon KDP book formatting by Olamilekanwaliu" loading="lazy" decoding="async" width="1200" height="721" /></div>
+        <div class="cs-bar"><span class="cs-meta"><span class="cs-genre">Relocation Guide</span><span class="cs-title">Moving to Spain With Children</span></span><span class="cs-view">View PDF &rarr;</span></div>
+      </a>
+      <a class="cs-card" data-cat="workbook" href="samples/own-your-shit-workbook-case-study.pdf" target="_blank" rel="noopener" aria-label="View Own Your Sh!t Workbook case study (PDF)">
+        <div class="cs-img"><span class="cs-badge">Case Study</span><img src="images/portfolio/own-your-shit-workbook.jpg" alt="Own Your Sh!t Workbook — Therapy Workbook Amazon KDP book formatting by Olamilekanwaliu" loading="lazy" decoding="async" width="1200" height="721" /></div>
+        <div class="cs-bar"><span class="cs-meta"><span class="cs-genre">Therapy Workbook</span><span class="cs-title">Own Your Sh!t Workbook</span></span><span class="cs-view">View PDF &rarr;</span></div>
+      </a>
+      <a class="cs-card" data-cat="faith" href="samples/my-seven-covenants-case-study.pdf" target="_blank" rel="noopener" aria-label="View My Seven Covenants case study (PDF)">
+        <div class="cs-img"><span class="cs-badge">Case Study</span><img src="images/portfolio/my-seven-covenants.jpg" alt="My Seven Covenants — Illustrated Faith Book Amazon KDP book formatting by Olamilekanwaliu" loading="lazy" decoding="async" width="1200" height="721" /></div>
+        <div class="cs-bar"><span class="cs-meta"><span class="cs-genre">Illustrated Faith Book</span><span class="cs-title">My Seven Covenants</span></span><span class="cs-view">View PDF &rarr;</span></div>
+      </a>
+      <a class="cs-card" data-cat="nonfiction" href="samples/therapy-changed-case-study.pdf" target="_blank" rel="noopener" aria-label="View Therapy Changed My Suicidal Thoughts to Self-Love! case study (PDF)">
+        <div class="cs-img"><span class="cs-badge">Case Study</span><img src="images/portfolio/therapy-changed.jpg" alt="Therapy Changed My Suicidal Thoughts to Self-Love! — Memoir Amazon KDP book formatting by Olamilekanwaliu" loading="lazy" decoding="async" width="1200" height="721" /></div>
+        <div class="cs-bar"><span class="cs-meta"><span class="cs-genre">Memoir</span><span class="cs-title">Therapy Changed My Suicidal Thoughts to Self-Love!</span></span><span class="cs-view">View PDF &rarr;</span></div>
+      </a>
+      <a class="cs-card" data-cat="workbook" href="samples/from-anxious-to-confident-case-study.pdf" target="_blank" rel="noopener" aria-label="View From Anxious to Confident case study (PDF)">
+        <div class="cs-img"><span class="cs-badge">Case Study</span><img src="images/portfolio/from-anxious-to-confident.jpg" alt="From Anxious to Confident — Self-Help Workbook Amazon KDP book formatting by Olamilekanwaliu" loading="lazy" decoding="async" width="1200" height="721" /></div>
+        <div class="cs-bar"><span class="cs-meta"><span class="cs-genre">Self-Help Workbook</span><span class="cs-title">From Anxious to Confident</span></span><span class="cs-view">View PDF &rarr;</span></div>
+      </a>
+      <a class="cs-card" data-cat="nonfiction" href="samples/from-flagged-to-restored-case-study.pdf" target="_blank" rel="noopener" aria-label="View From Flagged to Restored case study (PDF)">
+        <div class="cs-img"><span class="cs-badge">Case Study</span><img src="images/portfolio/from-flagged-to-restored.jpg" alt="From Flagged to Restored — Nonfiction / KDP Amazon KDP book formatting by Olamilekanwaliu" loading="lazy" decoding="async" width="1200" height="721" /></div>
+        <div class="cs-bar"><span class="cs-meta"><span class="cs-genre">Nonfiction / KDP</span><span class="cs-title">From Flagged to Restored</span></span><span class="cs-view">View PDF &rarr;</span></div>
+      </a>
+      <a class="cs-card" data-cat="workbook" href="samples/gig-search-hacks-case-study.pdf" target="_blank" rel="noopener" aria-label="View Gig Search Hacks Workbook case study (PDF)">
+        <div class="cs-img"><span class="cs-badge">Case Study</span><img src="images/portfolio/gig-search-hacks.jpg" alt="Gig Search Hacks Workbook — Workbook Amazon KDP book formatting by Olamilekanwaliu" loading="lazy" decoding="async" width="1200" height="721" /></div>
+        <div class="cs-bar"><span class="cs-meta"><span class="cs-genre">Workbook</span><span class="cs-title">Gig Search Hacks Workbook</span></span><span class="cs-view">View PDF &rarr;</span></div>
+      </a>
+      <a class="cs-card" data-cat="fiction" href="samples/come-forth-case-study.pdf" target="_blank" rel="noopener" aria-label="View Come Forth case study (PDF)">
+        <div class="cs-img"><span class="cs-badge">Case Study</span><img src="images/portfolio/come-forth.jpg" alt="Come Forth — Epic Fantasy Fiction Amazon KDP book formatting by Olamilekanwaliu" loading="lazy" decoding="async" width="1200" height="721" /></div>
+        <div class="cs-bar"><span class="cs-meta"><span class="cs-genre">Epic Fantasy Fiction</span><span class="cs-title">Come Forth</span></span><span class="cs-view">View PDF &rarr;</span></div>
+      </a>
+      <a class="cs-card" data-cat="faith" href="samples/foundations-case-study.pdf" target="_blank" rel="noopener" aria-label="View Foundations case study (PDF)">
+        <div class="cs-img"><span class="cs-badge">Case Study</span><img src="images/portfolio/foundations.jpg" alt="Foundations — Christian Living Amazon KDP book formatting by Olamilekanwaliu" loading="lazy" decoding="async" width="1200" height="721" /></div>
+        <div class="cs-bar"><span class="cs-meta"><span class="cs-genre">Christian Living</span><span class="cs-title">Foundations</span></span><span class="cs-view">View PDF &rarr;</span></div>
+      </a>
+      <a class="cs-card" data-cat="fiction" href="samples/gotta-get-it-out-case-study.pdf" target="_blank" rel="noopener" aria-label="View Gotta Get It Out case study (PDF)">
+        <div class="cs-img"><span class="cs-badge">Case Study</span><img src="images/portfolio/gotta-get-it-out.jpg" alt="Gotta Get It Out — Poetry Amazon KDP book formatting by Olamilekanwaliu" loading="lazy" decoding="async" width="1200" height="721" /></div>
+        <div class="cs-bar"><span class="cs-meta"><span class="cs-genre">Poetry</span><span class="cs-title">Gotta Get It Out</span></span><span class="cs-view">View PDF &rarr;</span></div>
+      </a>
+      <a class="cs-card" data-cat="workbook" href="samples/senior-living-made-simple-case-study.pdf" target="_blank" rel="noopener" aria-label="View Senior Living Made SIMPLE Workbook case study (PDF)">
+        <div class="cs-img"><span class="cs-badge">Case Study</span><img src="images/portfolio/senior-living-made-simple.jpg" alt="Senior Living Made SIMPLE Workbook — Guided Workbook Amazon KDP book formatting by Olamilekanwaliu" loading="lazy" decoding="async" width="1200" height="721" /></div>
+        <div class="cs-bar"><span class="cs-meta"><span class="cs-genre">Guided Workbook</span><span class="cs-title">Senior Living Made SIMPLE Workbook</span></span><span class="cs-view">View PDF &rarr;</span></div>
+      </a>
+      <a class="cs-card" data-cat="nonfiction" href="samples/stronger-at-the-core-case-study.pdf" target="_blank" rel="noopener" aria-label="View Stronger at the Core case study (PDF)">
+        <div class="cs-img"><span class="cs-badge">Case Study</span><img src="images/portfolio/stronger-at-the-core.jpg" alt="Stronger at the Core — Leadership Training Amazon KDP book formatting by Olamilekanwaliu" loading="lazy" decoding="async" width="1200" height="721" /></div>
+        <div class="cs-bar"><span class="cs-meta"><span class="cs-genre">Leadership Training</span><span class="cs-title">Stronger at the Core</span></span><span class="cs-view">View PDF &rarr;</span></div>
+      </a>
+      <a class="cs-card" data-cat="workbook" href="samples/the-relationship-detox-case-study.pdf" target="_blank" rel="noopener" aria-label="View The Relationship Detox case study (PDF)">
+        <div class="cs-img"><span class="cs-badge">Case Study</span><img src="images/portfolio/the-relationship-detox.jpg" alt="The Relationship Detox — Healing Workbook Amazon KDP book formatting by Olamilekanwaliu" loading="lazy" decoding="async" width="1200" height="721" /></div>
+        <div class="cs-bar"><span class="cs-meta"><span class="cs-genre">Healing Workbook</span><span class="cs-title">The Relationship Detox</span></span><span class="cs-view">View PDF &rarr;</span></div>
+      </a>
+      <a class="cs-card" data-cat="nonfiction" href="samples/gen-b-generation-blessed-case-study.pdf" target="_blank" rel="noopener" aria-label="View Gen B: Generation Blessed case study (PDF)">
+        <div class="cs-img"><span class="cs-badge">Case Study</span><img src="images/portfolio/gen-b-generation-blessed.jpg" alt="Gen B: Generation Blessed — Memoir-Style Story Amazon KDP book formatting by Olamilekanwaliu" loading="lazy" decoding="async" width="1200" height="721" /></div>
+        <div class="cs-bar"><span class="cs-meta"><span class="cs-genre">Memoir-Style Story</span><span class="cs-title">Gen B: Generation Blessed</span></span><span class="cs-view">View PDF &rarr;</span></div>
+      </a>
+    </div>
+  </div>
+</section>
+
 <!-- WHO FOR -->
 <section style="background:var(--parchment)">
   <div class="container">
@@ -618,6 +722,16 @@
         else { err.style.display='block'; btn.disabled=false; btn.textContent='Request Your Quote →'; }
       }catch(_){ err.style.display='block'; btn.disabled=false; btn.textContent='Request Your Quote →'; }
     });
+  })();
+</script>
+<script>
+  (function(){
+    var btns=document.querySelectorAll('.pf-filter'), cards=document.querySelectorAll('.cs-card');
+    btns.forEach(function(b){b.addEventListener('click',function(){
+      btns.forEach(function(x){x.classList.remove('active')}); b.classList.add('active');
+      var f=b.dataset.filter;
+      cards.forEach(function(c){ c.classList.toggle('hidden', f!=='all' && c.dataset.cat!==f); });
+    });});
   })();
 </script>
 </body>
