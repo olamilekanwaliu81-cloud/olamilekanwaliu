@@ -1972,6 +1972,18 @@
     @media (max-width: 768px) {
       section, .reviews-section, .platforms-section { padding-top: 56px; padding-bottom: 56px; }
     }
+    /* ===== CASE STUDY GALLERY ===== */
+    .cs-grid{display:grid;grid-template-columns:1fr 1fr;gap:22px;max-width:1040px;margin:42px auto 0}
+    .cs-card{display:block;text-decoration:none;background:var(--cream);border:1px solid rgba(200,134,42,.14);border-radius:16px;overflow:hidden;transition:transform .3s ease,box-shadow .3s ease}
+    .cs-card:hover{transform:translateY(-5px);box-shadow:0 18px 46px rgba(0,0,0,.28)}
+    .cs-img{position:relative;overflow:hidden;line-height:0}
+    .cs-img img{width:100%;height:auto;display:block;transition:transform .45s ease}
+    .cs-card:hover .cs-img img{transform:scale(1.04)}
+    .cs-badge{position:absolute;top:12px;right:12px;background:rgba(26,18,8,.82);color:var(--cream);font-size:10px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;padding:5px 11px;border-radius:100px;z-index:2}
+    .cs-bar{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:15px 20px}
+    .cs-title{font-family:'Cormorant Garamond',serif;font-size:20px;font-weight:700;color:var(--ink);line-height:1.2}
+    .cs-view{font-size:12.5px;font-weight:700;color:var(--gold);white-space:nowrap}
+    @media(max-width:760px){.cs-grid{grid-template-columns:1fr;max-width:460px}}
 </style>
     <!-- Meta Pixel Code 1 -->
     <script>
@@ -2063,6 +2075,7 @@
       <li><a href="#services">Services</a></li>
       <li><a href="#transformation">How It Works</a></li>
       <li><a href="#portfolio">Portfolio</a></li>
+      <li><a href="amazon-kdp-book-formatting.html">KDP Formatting</a></li>
       <li><a href="#testimonials">Testimonials</a></li>
       <li><a href="#reviews">Reviews</a></li>
       <li><a href="#contact">Contact</a></li>
@@ -2081,6 +2094,7 @@
   <a href="#services">Services</a>
   <a href="#transformation">How It Works</a>
   <a href="#portfolio">Portfolio</a>
+  <a href="amazon-kdp-book-formatting.html">KDP Formatting</a>
   <a href="#testimonials">Testimonials</a>
   <a href="#reviews">Reviews</a>
   <a href="#contact">Contact</a>
@@ -2300,7 +2314,7 @@
         <div class="service-num">Service 02</div>
         <span class="service-icon">📐</span>
         <h3 class="service-title">Book Formatting and Design</h3>
-        <p class="service-desc">Convert your manuscript into a professional, publish-ready book. Proper typography, layout, chapter design, and cover guidance that meets Amazon KDP and major distributor standards.</p>
+        <p class="service-desc">Convert your manuscript into a professional, publish-ready book. Proper typography, layout, chapter design, and cover guidance that meets Amazon KDP and major distributor standards. <a href="amazon-kdp-book-formatting.html" style="color:var(--gold);font-weight:600;">See our Amazon KDP formatting service →</a></p>
       </div>
       <div class="service-card">
         <div class="service-num">Service 03</div>
@@ -2465,199 +2479,76 @@
     <div class="center">
       <div class="section-label"><span class="chip" style="background:rgba(200,134,42,0.15);border-color:rgba(200,134,42,0.25);color:var(--gold-light);">My Work</span></div>
       <h2 class="section-head">Real Projects. <em>Real Results.</em></h2>
-      <p class="section-sub">A selection of book covers, interior layouts, Amazon KDP publishing, and formatting projects delivered to clients across different genres.</p>
+      <p class="section-sub">Real book formatting, cover design and Amazon KDP projects delivered for authors across many genres. Click any project to open the full case study.</p>
     </div>
-    <div class="pf-filters">
-      <button class="pf-filter active" data-filter="all">All Work</button>
-      <button class="pf-filter" data-filter="cover">Book Covers</button>
-      <button class="pf-filter" data-filter="layout">Interior Layout</button>
-      <button class="pf-filter" data-filter="kdp">Amazon KDP</button>
-      <button class="pf-filter" data-filter="format">Formatting</button>
-      <button class="pf-filter" data-filter="launch">Book Launch</button>
-      <button class="pf-filter" data-filter="mockup">3D Mockups</button>
+    <div class="cs-grid">
+      <a class="cs-card" href="samples/judge-not-case-study.pdf" target="_blank" rel="noopener" aria-label="View Judge Not case study (PDF)">
+        <div class="cs-img"><span class="cs-badge">Case Study</span><img src="images/portfolio/judge-not.jpg" alt="Judge Not — Amazon KDP book formatting case study by Olamilekanwaliu" loading="lazy" decoding="async" width="1200" height="721" /></div>
+        <div class="cs-bar"><span class="cs-title">Judge Not</span><span class="cs-view">View PDF &rarr;</span></div>
+      </a>
+      <a class="cs-card" href="samples/soul-sneakers-case-study.pdf" target="_blank" rel="noopener" aria-label="View Soul Sneakers: Passport to Play case study (PDF)">
+        <div class="cs-img"><span class="cs-badge">Case Study</span><img src="images/portfolio/soul-sneakers.jpg" alt="Soul Sneakers: Passport to Play — Amazon KDP book formatting case study by Olamilekanwaliu" loading="lazy" decoding="async" width="1200" height="721" /></div>
+        <div class="cs-bar"><span class="cs-title">Soul Sneakers: Passport to Play</span><span class="cs-view">View PDF &rarr;</span></div>
+      </a>
+      <a class="cs-card" href="samples/moving-to-spain-case-study.pdf" target="_blank" rel="noopener" aria-label="View Moving to Spain With Children case study (PDF)">
+        <div class="cs-img"><span class="cs-badge">Case Study</span><img src="images/portfolio/moving-to-spain.jpg" alt="Moving to Spain With Children — Amazon KDP book formatting case study by Olamilekanwaliu" loading="lazy" decoding="async" width="1200" height="721" /></div>
+        <div class="cs-bar"><span class="cs-title">Moving to Spain With Children</span><span class="cs-view">View PDF &rarr;</span></div>
+      </a>
+      <a class="cs-card" href="samples/own-your-shit-workbook-case-study.pdf" target="_blank" rel="noopener" aria-label="View Own Your Sh!t Workbook case study (PDF)">
+        <div class="cs-img"><span class="cs-badge">Case Study</span><img src="images/portfolio/own-your-shit-workbook.jpg" alt="Own Your Sh!t Workbook — Amazon KDP book formatting case study by Olamilekanwaliu" loading="lazy" decoding="async" width="1200" height="721" /></div>
+        <div class="cs-bar"><span class="cs-title">Own Your Sh!t Workbook</span><span class="cs-view">View PDF &rarr;</span></div>
+      </a>
+      <a class="cs-card" href="samples/my-seven-covenants-case-study.pdf" target="_blank" rel="noopener" aria-label="View My Seven Covenants case study (PDF)">
+        <div class="cs-img"><span class="cs-badge">Case Study</span><img src="images/portfolio/my-seven-covenants.jpg" alt="My Seven Covenants — Amazon KDP book formatting case study by Olamilekanwaliu" loading="lazy" decoding="async" width="1200" height="721" /></div>
+        <div class="cs-bar"><span class="cs-title">My Seven Covenants</span><span class="cs-view">View PDF &rarr;</span></div>
+      </a>
+      <a class="cs-card" href="samples/therapy-changed-case-study.pdf" target="_blank" rel="noopener" aria-label="View Therapy Changed My Suicidal Thoughts to Self-Love! case study (PDF)">
+        <div class="cs-img"><span class="cs-badge">Case Study</span><img src="images/portfolio/therapy-changed.jpg" alt="Therapy Changed My Suicidal Thoughts to Self-Love! — Amazon KDP book formatting case study by Olamilekanwaliu" loading="lazy" decoding="async" width="1200" height="721" /></div>
+        <div class="cs-bar"><span class="cs-title">Therapy Changed My Suicidal Thoughts to Self-Love!</span><span class="cs-view">View PDF &rarr;</span></div>
+      </a>
+      <a class="cs-card" href="samples/from-anxious-to-confident-case-study.pdf" target="_blank" rel="noopener" aria-label="View From Anxious to Confident case study (PDF)">
+        <div class="cs-img"><span class="cs-badge">Case Study</span><img src="images/portfolio/from-anxious-to-confident.jpg" alt="From Anxious to Confident — Amazon KDP book formatting case study by Olamilekanwaliu" loading="lazy" decoding="async" width="1200" height="721" /></div>
+        <div class="cs-bar"><span class="cs-title">From Anxious to Confident</span><span class="cs-view">View PDF &rarr;</span></div>
+      </a>
+      <a class="cs-card" href="samples/from-flagged-to-restored-case-study.pdf" target="_blank" rel="noopener" aria-label="View From Flagged to Restored case study (PDF)">
+        <div class="cs-img"><span class="cs-badge">Case Study</span><img src="images/portfolio/from-flagged-to-restored.jpg" alt="From Flagged to Restored — Amazon KDP book formatting case study by Olamilekanwaliu" loading="lazy" decoding="async" width="1200" height="721" /></div>
+        <div class="cs-bar"><span class="cs-title">From Flagged to Restored</span><span class="cs-view">View PDF &rarr;</span></div>
+      </a>
+      <a class="cs-card" href="samples/gig-search-hacks-case-study.pdf" target="_blank" rel="noopener" aria-label="View Gig Search Hacks Workbook case study (PDF)">
+        <div class="cs-img"><span class="cs-badge">Case Study</span><img src="images/portfolio/gig-search-hacks.jpg" alt="Gig Search Hacks Workbook — Amazon KDP book formatting case study by Olamilekanwaliu" loading="lazy" decoding="async" width="1200" height="721" /></div>
+        <div class="cs-bar"><span class="cs-title">Gig Search Hacks Workbook</span><span class="cs-view">View PDF &rarr;</span></div>
+      </a>
+      <a class="cs-card" href="samples/come-forth-case-study.pdf" target="_blank" rel="noopener" aria-label="View Come Forth case study (PDF)">
+        <div class="cs-img"><span class="cs-badge">Case Study</span><img src="images/portfolio/come-forth.jpg" alt="Come Forth — Amazon KDP book formatting case study by Olamilekanwaliu" loading="lazy" decoding="async" width="1200" height="721" /></div>
+        <div class="cs-bar"><span class="cs-title">Come Forth</span><span class="cs-view">View PDF &rarr;</span></div>
+      </a>
+      <a class="cs-card" href="samples/foundations-case-study.pdf" target="_blank" rel="noopener" aria-label="View Foundations case study (PDF)">
+        <div class="cs-img"><span class="cs-badge">Case Study</span><img src="images/portfolio/foundations.jpg" alt="Foundations — Amazon KDP book formatting case study by Olamilekanwaliu" loading="lazy" decoding="async" width="1200" height="721" /></div>
+        <div class="cs-bar"><span class="cs-title">Foundations</span><span class="cs-view">View PDF &rarr;</span></div>
+      </a>
+      <a class="cs-card" href="samples/gotta-get-it-out-case-study.pdf" target="_blank" rel="noopener" aria-label="View Gotta Get It Out case study (PDF)">
+        <div class="cs-img"><span class="cs-badge">Case Study</span><img src="images/portfolio/gotta-get-it-out.jpg" alt="Gotta Get It Out — Amazon KDP book formatting case study by Olamilekanwaliu" loading="lazy" decoding="async" width="1200" height="721" /></div>
+        <div class="cs-bar"><span class="cs-title">Gotta Get It Out</span><span class="cs-view">View PDF &rarr;</span></div>
+      </a>
+      <a class="cs-card" href="samples/senior-living-made-simple-case-study.pdf" target="_blank" rel="noopener" aria-label="View Senior Living Made SIMPLE Workbook case study (PDF)">
+        <div class="cs-img"><span class="cs-badge">Case Study</span><img src="images/portfolio/senior-living-made-simple.jpg" alt="Senior Living Made SIMPLE Workbook — Amazon KDP book formatting case study by Olamilekanwaliu" loading="lazy" decoding="async" width="1200" height="721" /></div>
+        <div class="cs-bar"><span class="cs-title">Senior Living Made SIMPLE Workbook</span><span class="cs-view">View PDF &rarr;</span></div>
+      </a>
+      <a class="cs-card" href="samples/stronger-at-the-core-case-study.pdf" target="_blank" rel="noopener" aria-label="View Stronger at the Core case study (PDF)">
+        <div class="cs-img"><span class="cs-badge">Case Study</span><img src="images/portfolio/stronger-at-the-core.jpg" alt="Stronger at the Core — Amazon KDP book formatting case study by Olamilekanwaliu" loading="lazy" decoding="async" width="1200" height="721" /></div>
+        <div class="cs-bar"><span class="cs-title">Stronger at the Core</span><span class="cs-view">View PDF &rarr;</span></div>
+      </a>
+      <a class="cs-card" href="samples/the-relationship-detox-case-study.pdf" target="_blank" rel="noopener" aria-label="View The Relationship Detox case study (PDF)">
+        <div class="cs-img"><span class="cs-badge">Case Study</span><img src="images/portfolio/the-relationship-detox.jpg" alt="The Relationship Detox — Amazon KDP book formatting case study by Olamilekanwaliu" loading="lazy" decoding="async" width="1200" height="721" /></div>
+        <div class="cs-bar"><span class="cs-title">The Relationship Detox</span><span class="cs-view">View PDF &rarr;</span></div>
+      </a>
+      <a class="cs-card" href="samples/gen-b-generation-blessed-case-study.pdf" target="_blank" rel="noopener" aria-label="View Gen B: Generation Blessed case study (PDF)">
+        <div class="cs-img"><span class="cs-badge">Case Study</span><img src="images/portfolio/gen-b-generation-blessed.jpg" alt="Gen B: Generation Blessed — Amazon KDP book formatting case study by Olamilekanwaliu" loading="lazy" decoding="async" width="1200" height="721" /></div>
+        <div class="cs-bar"><span class="cs-title">Gen B: Generation Blessed</span><span class="cs-view">View PDF &rarr;</span></div>
+      </a>
     </div>
-    <div class="pf-grid">
-      <div class="pf-card" data-cat="launch">
-        <div class="pf-img-wrap">
-          <img src="images/pic-453270bc87.jpg" alt="Above the Clouds" loading="lazy"  decoding="async" width="776" height="1200" />
-          <div class="pf-overlay">
-            <span class="pf-zoom">🔍 View</span>
-          </div>
-        </div>
-        <div class="pf-info">
-          <span class="pf-tag">Book Cover Design</span>
-          <p class="pf-title">Above the Clouds</p>
-        </div>
-      </div>
-      <div class="pf-card" data-cat="cover">
-        <div class="pf-img-wrap">
-          <img src="images/pic-9ceed280e0.jpg" alt="Overcoming Osteoporosis" loading="lazy"  decoding="async" width="1200" height="769" />
-          <div class="pf-overlay">
-            <span class="pf-zoom">🔍 View</span>
-          </div>
-        </div>
-        <div class="pf-info">
-          <span class="pf-tag">Book Cover Design</span>
-          <p class="pf-title">Overcoming Osteoporosis</p>
-        </div>
-      </div>
-      <div class="pf-card" data-cat="layout">
-        <div class="pf-img-wrap">
-          <img src="images/pic-45e1f6fba5.jpg" alt="From Anxious to Confident" loading="lazy"  decoding="async" width="1200" height="769" />
-          <div class="pf-overlay">
-            <span class="pf-zoom">🔍 View</span>
-          </div>
-        </div>
-        <div class="pf-info">
-          <span class="pf-tag">Interior Layout</span>
-          <p class="pf-title">From Anxious to Confident</p>
-        </div>
-      </div>
-      <div class="pf-card" data-cat="layout">
-        <div class="pf-img-wrap">
-          <img src="images/pic-f23025010c.jpg" alt="Virtual Training Manual" loading="lazy"  decoding="async" width="1200" height="769" />
-          <div class="pf-overlay">
-            <span class="pf-zoom">🔍 View</span>
-          </div>
-        </div>
-        <div class="pf-info">
-          <span class="pf-tag">Interior Layout</span>
-          <p class="pf-title">Virtual Training Manual</p>
-        </div>
-      </div>
-      <div class="pf-card" data-cat="layout">
-        <div class="pf-img-wrap">
-          <img src="images/pic-8837c13214.jpg" alt="Dr. Asim's ICU Manual" loading="lazy"  decoding="async" width="1200" height="769" />
-          <div class="pf-overlay">
-            <span class="pf-zoom">🔍 View</span>
-          </div>
-        </div>
-        <div class="pf-info">
-          <span class="pf-tag">Interior Layout</span>
-          <p class="pf-title">Dr. Asim's ICU Manual</p>
-        </div>
-      </div>
-      <div class="pf-card" data-cat="kdp">
-        <div class="pf-img-wrap">
-          <img src="images/pic-2c34a47fea.jpg" alt="GIG Search Hacks KDP" loading="lazy"  decoding="async" width="1200" height="769" />
-          <div class="pf-overlay">
-            <span class="pf-zoom">🔍 View</span>
-          </div>
-        </div>
-        <div class="pf-info">
-          <span class="pf-tag">Amazon KDP Published</span>
-          <p class="pf-title">GIG Search Hacks KDP</p>
-        </div>
-      </div>
-      <div class="pf-card" data-cat="kdp">
-        <div class="pf-img-wrap">
-          <img src="images/pic-179f88ed2b.jpg" alt="Rima Jomaa – Live on Amazon" loading="lazy"  decoding="async" width="1200" height="769" />
-          <div class="pf-overlay">
-            <span class="pf-zoom">🔍 View</span>
-          </div>
-        </div>
-        <div class="pf-info">
-          <span class="pf-tag">Amazon KDP Published</span>
-          <p class="pf-title">Rima Jomaa – Live on Amazon</p>
-        </div>
-      </div>
-      <div class="pf-card" data-cat="launch">
-        <div class="pf-img-wrap">
-          <img src="images/pic-90bc562985.jpg" alt="The Mindset Advantage" loading="lazy"  decoding="async" width="1200" height="1200" />
-          <div class="pf-overlay">
-            <span class="pf-zoom">🔍 View</span>
-          </div>
-        </div>
-        <div class="pf-info">
-          <span class="pf-tag">Complete Book Launch A-to-Z</span>
-          <p class="pf-title">From Flagged to Restored</p>
-        </div>
-      </div>
-      <div class="pf-card" data-cat="cover">
-        <div class="pf-img-wrap">
-          <img src="images/pic-0fca5938fe.jpg" alt="The Mindset Advantage Cover" loading="lazy"  decoding="async" width="1200" height="1200" />
-          <div class="pf-overlay">
-            <span class="pf-zoom">🔍 View</span>
-          </div>
-        </div>
-        <div class="pf-info">
-          <span class="pf-tag">Book Layout Design</span>
-          <p class="pf-title">From Flagged to Restored</p>
-        </div>
-      </div>
-      <div class="pf-card" data-cat="launch">
-        <div class="pf-img-wrap">
-          <img src="images/pic-5e8550f816.jpg" alt="From Flagged to Restored" loading="lazy"  decoding="async" width="1080" height="810" />
-          <div class="pf-overlay">
-            <span class="pf-zoom">🔍 View</span>
-          </div>
-        </div>
-        <div class="pf-info">
-          <span class="pf-tag">Complete Book Launch A-to-Z</span>
-          <p class="pf-title">GIG Search Hacks</p>
-        </div>
-      </div>
-      <div class="pf-card" data-cat="cover">
-        <div class="pf-img-wrap">
-          <img src="images/pic-8e71938df0.jpg" alt="GIG Search Hacks Mockup" loading="lazy"  decoding="async" width="1200" height="1200" />
-          <div class="pf-overlay">
-            <span class="pf-zoom">🔍 View</span>
-          </div>
-        </div>
-        <div class="pf-info">
-          <span class="pf-tag">Complete Book Launch A-to-Z</span>
-          <p class="pf-title">The Mindset Advantage</p>
-        </div>
-      </div>
-      <div class="pf-card" data-cat="mockup">
-        <div class="pf-img-wrap">
-          <img src="images/pic-d31790c939.jpg" alt="GIG Search Hacks Editions" loading="lazy"  decoding="async" width="1200" height="1200" />
-          <div class="pf-overlay">
-            <span class="pf-zoom">🔍 View</span>
-          </div>
-        </div>
-        <div class="pf-info">
-          <span class="pf-tag">Book Cover Design</span>
-          <p class="pf-title">The Mindset Advantage</p>
-        </div>
-      </div>
-      <div class="pf-card" data-cat="format">
-        <div class="pf-img-wrap">
-          <img src="images/pic-5ff28a3829.jpg" alt="My Seven Covenants" loading="lazy"  decoding="async" width="1200" height="800" />
-          <div class="pf-overlay">
-            <span class="pf-zoom">🔍 View</span>
-          </div>
-        </div>
-        <div class="pf-info">
-          <span class="pf-tag">Book Format & Layout</span>
-          <p class="pf-title">My Seven Covenants</p>
-        </div>
-      </div>
-      <div class="pf-card" data-cat="cover">
-        <div class="pf-img-wrap">
-          <img alt="Book cover design project by Olamilekanwaliu" src="images/pic-2acad43f7b.jpg" loading="lazy"  decoding="async" width="1200" height="1200" />
-          <div class="pf-overlay">
-            <span class="pf-zoom">&#128065; View</span>
-          </div>
-        </div>
-        <div class="pf-info">
-          <span class="pf-tag">Book Cover Design</span>
-          <p class="pf-title">My Seven Covenants</p>
-        </div>
-      </div>
-      <div class="pf-card" data-cat="format cover kdp">
-        <div class="pf-img-wrap">
-          <img src="images/pic-bae59cd54a.jpg" alt="Paula Axelrod's Memoir – Formatting, Cover Design & Amazon KDP" loading="lazy"  decoding="async" width="1200" height="800" />
-          <div class="pf-overlay">
-            <span class="pf-zoom">&#128065; View</span>
-          </div>
-        </div>
-        <div class="pf-info">
-          <span class="pf-tag">Formatting · Cover Design · Amazon KDP</span>
-          <p class="pf-title">Paula Axelrod's Memoir</p>
-        </div>
-      </div>
-
+    <div class="center" style="margin-top:34px">
+      <a href="amazon-kdp-book-formatting.html" class="btn-fiverr" style="display:inline-flex;align-items:center;gap:8px;background:var(--gold);color:#fff;font-weight:700;padding:14px 28px;border-radius:100px;text-decoration:none;">See our Amazon KDP formatting service &rarr;</a>
     </div>
   </div>
 </section>
@@ -3331,6 +3222,7 @@
       </a>
       <div class="footer-links">
         <a href="#services">Services</a>
+        <a href="amazon-kdp-book-formatting.html">KDP Formatting</a>
         <a href="#transformation">Process</a>
         <a href="#pricing">Packages</a>
         <a href="#reviews">Reviews</a>
@@ -3829,7 +3721,7 @@ s0.parentNode.insertBefore(s1,s0);
     const cols=[document.getElementById('hcCol1'),document.getElementById('hcCol2'),document.getElementById('hcCol3')];
     if(cols.some(x=>!x)) return;
     function run(){
-      const src=[...document.querySelectorAll('.pf-card img')];
+      const src=[{src:"images/pic-453270bc87.jpg",alt:"Book cover by Olamilekanwaliu"},{src:"images/pic-9ceed280e0.jpg",alt:"Book cover by Olamilekanwaliu"},{src:"images/pic-45e1f6fba5.jpg",alt:"Book cover by Olamilekanwaliu"},{src:"images/pic-f23025010c.jpg",alt:"Book cover by Olamilekanwaliu"},{src:"images/pic-8837c13214.jpg",alt:"Book cover by Olamilekanwaliu"},{src:"images/pic-2c34a47fea.jpg",alt:"Book cover by Olamilekanwaliu"},{src:"images/pic-179f88ed2b.jpg",alt:"Book cover by Olamilekanwaliu"},{src:"images/pic-90bc562985.jpg",alt:"Book cover by Olamilekanwaliu"},{src:"images/pic-0fca5938fe.jpg",alt:"Book cover by Olamilekanwaliu"},{src:"images/pic-5e8550f816.jpg",alt:"Book cover by Olamilekanwaliu"},{src:"images/pic-8e71938df0.jpg",alt:"Book cover by Olamilekanwaliu"},{src:"images/pic-d31790c939.jpg",alt:"Book cover by Olamilekanwaliu"},{src:"images/pic-5ff28a3829.jpg",alt:"Book cover by Olamilekanwaliu"},{src:"images/pic-2acad43f7b.jpg",alt:"Book cover by Olamilekanwaliu"},{src:"images/pic-bae59cd54a.jpg",alt:"Book cover by Olamilekanwaliu"}];
       if(!src.length) return;
       // spread images round-robin into 3 buckets
       const buckets=[[],[],[]];
