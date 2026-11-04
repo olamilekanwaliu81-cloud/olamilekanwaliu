@@ -6,6 +6,6 @@
    ============================================================ */
 window.CMS_CONFIG = {
   SUPABASE_URL: "https://YOUR-PROJECT-ref.supabase.co",   // <-- paste your Project URL
-  SUPABASE_ANON_KEY: "YOUR-PUBLIC-ANON-KEY",              // <-- paste your anon/public key
+  SUPABASE_ANON_KEY: "sb_publishable_JlMsMKOg4FIugikFeqYwiA_ZNeLhIM_",              // <-- paste your anon/public key
   IMAGE_BUCKET: "cms-images"
 };
