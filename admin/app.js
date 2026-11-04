@@ -50,10 +50,10 @@
 
   // ---- auth guard ----
   sb.auth.getSession().then(function(r){
-    if(!r.data.session){ location.replace('login.html'); return; }
+    if(!r.data.session){ location.replace('login'); return; }
     initNav(); load('portfolio');
   });
-  el('logout').addEventListener('click',async function(){ await sb.auth.signOut(); location.replace('login.html'); });
+  el('logout').addEventListener('click',async function(){ await sb.auth.signOut(); location.replace('login'); });
 
   // ---- sidebar ----
   function initNav(){
