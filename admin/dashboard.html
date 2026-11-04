@@ -5,6 +5,13 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <meta name="robots" content="noindex, nofollow" />
 <title>Dashboard — Olamilekanwaliu CMS</title>
+<link rel="manifest" href="/admin/manifest.webmanifest" />
+<meta name="theme-color" content="#1A1208" />
+<link rel="apple-touch-icon" href="/admin/icons/apple-180.png" />
+<meta name="apple-mobile-web-app-capable" content="yes" />
+<meta name="mobile-web-app-capable" content="yes" />
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+<meta name="apple-mobile-web-app-title" content="OCMS" />
 <style>
   *,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
   :root{--ink:#1A1208;--ink-mid:#3D2C14;--muted:#7A6A55;--cream:#FDFAF5;--parchment:#F5EFE0;--gold:#C8862A;--gold-light:#E5A84A;--green:#1A7A4A;--border:rgba(26,18,8,.12)}
@@ -102,5 +109,6 @@
   <script src="../cms-config.js"></script>
   <script src="vendor/supabase.js"></script>
   <script src="app.js"></script>
+<script>if('serviceWorker' in navigator){window.addEventListener('load',function(){navigator.serviceWorker.register('/admin/sw.js',{scope:'/admin/'}).catch(function(){});});}</script>
 </body>
 </html>

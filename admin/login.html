@@ -5,6 +5,13 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <meta name="robots" content="noindex, nofollow" />
 <title>Admin Login — Olamilekanwaliu CMS</title>
+<link rel="manifest" href="/admin/manifest.webmanifest" />
+<meta name="theme-color" content="#1A1208" />
+<link rel="apple-touch-icon" href="/admin/icons/apple-180.png" />
+<meta name="apple-mobile-web-app-capable" content="yes" />
+<meta name="mobile-web-app-capable" content="yes" />
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+<meta name="apple-mobile-web-app-title" content="OCMS" />
 <style>
   *,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
   :root{--ink:#1A1208;--ink-mid:#3D2C14;--muted:#7A6A55;--cream:#FDFAF5;--parchment:#F5EFE0;--gold:#C8862A;--gold-light:#E5A84A;--green:#1A7A4A;--border:rgba(26,18,8,.12)}
@@ -51,6 +58,7 @@
 
     <div class="divider">or</div>
     <button type="button" class="btn btn-ghost" id="magicBtn">Email me a sign-in link</button>
+    <button type="button" class="btn btn-ghost" id="installBtn" style="display:none;margin-top:10px">⬇ Install as app</button>
 
     <div class="msg" id="msg"></div>
     <div class="foot"><a href="/">&larr; Back to website</a></div>
@@ -95,6 +103,15 @@
       this.disabled=false; this.textContent='Email me a sign-in link';
     });
   })();
+
+  // PWA install prompt
+  (function(){
+    var deferred=null, btn=document.getElementById('installBtn');
+    window.addEventListener('beforeinstallprompt',function(e){ e.preventDefault(); deferred=e; if(btn) btn.style.display='block'; });
+    if(btn) btn.addEventListener('click',async function(){ if(!deferred) return; deferred.prompt(); await deferred.userChoice; deferred=null; btn.style.display='none'; });
+    window.addEventListener('appinstalled',function(){ if(btn) btn.style.display='none'; });
+  })();
   </script>
+<script>if('serviceWorker' in navigator){window.addEventListener('load',function(){navigator.serviceWorker.register('/admin/sw.js',{scope:'/admin/'}).catch(function(){});});}</script>
 </body>
 </html>
