@@ -3612,7 +3612,7 @@ s0.parentNode.insertBefore(s1,s0);
   // ===== Social proof popup =====
   // To add more: copy a line. "mins" = how many minutes ago it happened (auto-formatted live).
   (function(){
-    const people = [
+    const BAKED_PEOPLE = [
       { user: "Michael", flag: "🇺🇸", initial: "M", action: "started their Amazon KDP Ads project", mins: 1, badge: "Top Client" },
       { user: "cklein456", flag: "🇺🇸", initial: "C", action: "started their book publishing project", mins: 150, badge: "Top Client" },
       { user: "marshall5012", flag: "🇺🇸", initial: "M", action: "started their book promotion project", mins: 603, badge: "" },
@@ -3674,6 +3674,7 @@ s0.parentNode.insertBefore(s1,s0);
       { user: "felipealvare190", flag: "🇺🇸", initial: "F", action: "started their book editing project", mins: 507934, badge: "" },
       { user: "sherwinwells", flag: "🇳🇬", initial: "S", action: "started their book publishing project", mins: 525600, badge: "" },
     ];
+    function cmsPool(){ return (window.CMS_POPUPS && window.CMS_POPUPS.length) ? window.CMS_POPUPS : BAKED_PEOPLE; }
     const pop = document.getElementById('proofPop');
     if(!pop) return;
     const avatar=document.getElementById('proofAvatar');
@@ -3683,8 +3684,6 @@ s0.parentNode.insertBefore(s1,s0);
 
     // Turn each "mins ago" into a real timestamp (with slight jitter) so the label
     // advances on its own over time — no manual editing needed.
-    const now=Date.now();
-    people.forEach(p=>{ p.ts = now - Math.round(p.mins*60000*(0.85+Math.random()*0.3)); });
 
     function rel(ms){
       const m=Math.max(1,Math.round(ms/60000));
@@ -3708,13 +3707,13 @@ s0.parentNode.insertBefore(s1,s0);
       return '';
     }
 
-    const list=people.slice().sort(()=>Math.random()-0.5);
     let i=0, dismissed=false;
     document.querySelector('.proof-close').addEventListener('click',()=>{dismissed=true;});
 
     function showNext(){
       if(dismissed) return;
-      const p=list[i%list.length]; i++;
+      const pool=cmsPool(); const p=pool[i%pool.length]; i++;
+      if(p.ts==null){ p.ts = Date.now() - Math.round((p.mins||60)*60000*(0.85+Math.random()*0.3)); }
       if(p.img){ avatar.innerHTML='<img src="'+p.img+'" alt="">'; }
       else { avatar.textContent=p.initial; }
       nameEl.innerHTML=p.user+' <span class="flag">'+p.flag+'</span>'+badgeHtml(p.badge);
@@ -3748,5 +3747,7 @@ s0.parentNode.insertBefore(s1,s0);
     else window.addEventListener('load', run);
   })();
 </script>
+<script src="cms-config.js"></script>
+<script src="assets/cms-public.js" defer></script>
 </body>
 </html>

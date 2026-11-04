@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta name="robots" content="noindex, nofollow" />
+<title>Admin Login — Olamilekanwaliu CMS</title>
+<style>
+  *,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+  :root{--ink:#1A1208;--ink-mid:#3D2C14;--muted:#7A6A55;--cream:#FDFAF5;--parchment:#F5EFE0;--gold:#C8862A;--gold-light:#E5A84A;--green:#1A7A4A;--border:rgba(26,18,8,.12)}
+  body{font-family:'Outfit',system-ui,-apple-system,Segoe UI,Roboto,sans-serif;background:var(--parchment);color:var(--ink);min-height:100vh;display:flex;align-items:center;justify-content:center;padding:20px}
+  .card{background:var(--cream);width:100%;max-width:400px;border:1px solid var(--border);border-radius:18px;box-shadow:0 14px 50px rgba(26,18,8,.12);padding:36px 30px}
+  .logo{text-align:center;font-family:Georgia,serif;font-size:26px;font-weight:700;margin-bottom:4px}
+  .logo span{color:var(--gold);font-style:italic}
+  .sub{text-align:center;color:var(--muted);font-size:13px;margin-bottom:26px}
+  label{display:block;font-size:13px;font-weight:600;color:var(--ink-mid);margin:14px 0 6px}
+  input{width:100%;padding:13px 14px;border:1px solid var(--border);border-radius:10px;font-size:15px;font-family:inherit;background:#fff}
+  input:focus{outline:none;border-color:var(--gold)}
+  .pw-wrap{position:relative}
+  .pw-toggle{position:absolute;right:10px;top:50%;transform:translateY(-50%);background:none;border:none;color:var(--muted);font-size:12px;font-weight:600;cursor:pointer;padding:4px 8px}
+  .btn{width:100%;margin-top:20px;padding:14px;border:none;border-radius:10px;font-family:inherit;font-size:15px;font-weight:700;cursor:pointer;transition:transform .15s,background .2s}
+  .btn-primary{background:var(--ink);color:var(--cream)}
+  .btn-primary:hover{background:var(--ink-mid);transform:translateY(-1px)}
+  .btn:disabled{opacity:.6;cursor:not-allowed;transform:none}
+  .divider{display:flex;align-items:center;gap:10px;margin:20px 0;color:var(--muted);font-size:12px}
+  .divider::before,.divider::after{content:"";flex:1;height:1px;background:var(--border)}
+  .btn-ghost{background:transparent;color:var(--ink);border:1.5px solid var(--border)}
+  .btn-ghost:hover{border-color:var(--gold);color:var(--gold)}
+  .msg{margin-top:16px;padding:11px 14px;border-radius:9px;font-size:13.5px;display:none}
+  .msg.err{background:rgba(200,60,40,.08);border:1px solid rgba(200,60,40,.3);color:#b43c28;display:block}
+  .msg.ok{background:rgba(26,122,74,.1);border:1px solid rgba(26,122,74,.3);color:var(--green);display:block}
+  .foot{text-align:center;margin-top:22px;font-size:12px}
+  .foot a{color:var(--muted);text-decoration:none}
+</style>
+</head>
+<body>
+  <form class="card" id="loginCard" autocomplete="off">
+    <div class="logo"><span>O</span>lamilekanwaliu</div>
+    <div class="sub">Content Dashboard — Admin Login</div>
+
+    <label for="email">Email</label>
+    <input type="email" id="email" name="cms_email" autocomplete="off" placeholder="you@example.com" required />
+
+    <label for="password">Password</label>
+    <div class="pw-wrap">
+      <input type="password" id="password" name="cms_password" autocomplete="new-password" placeholder="Your password" />
+      <button type="button" class="pw-toggle" id="pwToggle">Show</button>
+    </div>
+
+    <button type="submit" class="btn btn-primary" id="loginBtn">Sign In &rarr;</button>
+
+    <div class="divider">or</div>
+    <button type="button" class="btn btn-ghost" id="magicBtn">Email me a sign-in link</button>
+
+    <div class="msg" id="msg"></div>
+    <div class="foot"><a href="../index.html">&larr; Back to website</a></div>
+  </form>
+
+  <script src="../cms-config.js"></script>
+  <script src="vendor/supabase.js"></script>
+  <script>
+  (function(){
+    var cfg=window.CMS_CONFIG||{};
+    var msg=document.getElementById('msg');
+    function show(t,ok){ msg.textContent=t; msg.className='msg '+(ok?'ok':'err'); }
+    if(!cfg.SUPABASE_URL || cfg.SUPABASE_URL.indexOf('YOUR-PROJECT')>-1){
+      show('Setup needed: paste your Supabase URL and anon key into cms-config.js',false); return;
+    }
+    var sb=supabase.createClient(cfg.SUPABASE_URL,cfg.SUPABASE_ANON_KEY);
+
+    // already signed in? go to dashboard
+    sb.auth.getSession().then(function(r){ if(r.data.session) location.replace('dashboard.html'); });
+
+    document.getElementById('pwToggle').addEventListener('click',function(){
+      var p=document.getElementById('password');
+      if(p.type==='password'){p.type='text';this.textContent='Hide';} else {p.type='password';this.textContent='Show';}
+    });
+
+    document.getElementById('loginCard').addEventListener('submit',async function(e){
+      e.preventDefault();
+      var btn=document.getElementById('loginBtn'); btn.disabled=true; btn.textContent='Signing in…';
+      var email=document.getElementById('email').value.trim();
+      var pw=document.getElementById('password').value;
+      var r=await sb.auth.signInWithPassword({email:email,password:pw});
+      if(r.error){ show(r.error.message,false); btn.disabled=false; btn.textContent='Sign In →'; }
+      else { location.replace('dashboard.html'); }
+    });
+
+    document.getElementById('magicBtn').addEventListener('click',async function(){
+      var email=document.getElementById('email').value.trim();
+      if(!email){ show('Enter your email first, then click the link button.',false); return; }
+      this.disabled=true; this.textContent='Sending…';
+      var r=await sb.auth.signInWithOtp({email:email,options:{emailRedirectTo:location.origin+location.pathname.replace('login.html','dashboard.html')}});
+      if(r.error){ show(r.error.message,false); } else { show('Check your email for a sign-in link.',true); }
+      this.disabled=false; this.textContent='Email me a sign-in link';
+    });
+  })();
+  </script>
+</body>
+</html>
