@@ -1,4 +1,4 @@
-/* Olamilekanwaliu CMS — public renderer.
+/* Olamilekanwaliu CMS ,  public renderer.
    Renders live content over the existing hard-coded markup.
    SAFE FALLBACK: if not configured, fetch fails, or a table is empty,
    the original hard-coded content is left untouched. */
@@ -20,7 +20,7 @@
       var badge='Case Study'; var b0=grid.querySelector('.cs-badge'); if(b0) badge=b0.textContent;
       grid.innerHTML=rows.map(function(r){
         return '<a class="cs-card" data-cat="'+esc(r.category)+'" href="'+esc(r.pdf_url)+'" target="_blank" rel="noopener" aria-label="View '+esc(r.title)+' case study (PDF)">'
-          +'<div class="cs-img"><span class="cs-badge">'+esc(badge)+'</span><img src="'+esc(r.image_url)+'" alt="'+esc(r.title)+' — '+esc(r.genre)+'" loading="lazy" decoding="async"></div>'
+          +'<div class="cs-img"><span class="cs-badge">'+esc(badge)+'</span><img src="'+esc(r.image_url)+'" alt="'+esc(r.title)+' ,  '+esc(r.genre)+'" loading="lazy" decoding="async"></div>'
           +'<div class="cs-bar"><span class="cs-meta"><span class="cs-genre">'+esc(r.genre)+'</span><span class="cs-title">'+esc(r.title)+'</span></span><span class="cs-view">View PDF →</span></div></a>';
       }).join('');
     });

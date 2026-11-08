@@ -1,5 +1,5 @@
 -- ============================================================
--- Olamilekanwaliu CMS — DATABASE SCHEMA  (run ONCE in Supabase SQL Editor)
+-- Olamilekanwaliu CMS, DATABASE SCHEMA  (run ONCE in Supabase SQL Editor)
 -- Public can READ everything. Only the logged-in admin can WRITE.
 -- ============================================================
 
@@ -82,7 +82,7 @@ create policy "admin write cms-images" on storage.objects
 
 
 -- ============================================================
--- Olamilekanwaliu CMS — SEED existing content (run ONCE after schema.sql)
+-- Olamilekanwaliu CMS, SEED existing content (run ONCE after schema.sql)
 -- Idempotent: each block only inserts if that table is still EMPTY.
 -- ============================================================
 
@@ -113,11 +113,11 @@ do $$
 begin
   if not exists (select 1 from services) then
     insert into services (num, icon, title, description, sort_order) values
-      ('Service 01', '✍', 'Ghostwriting and Book Editing', 'Turn your idea into a polished, publish-ready manuscript. From ghostwriting your story to professional editing — structure, clarity, flow, grammar, and consistency — I refine every chapter so your book reads like it was written by a pro.', 0),
+      ('Service 01', '✍', 'Ghostwriting and Book Editing', 'Turn your idea into a polished, publish-ready manuscript. From ghostwriting your story to professional editing, structure, clarity, flow, grammar, and consistency, I refine every chapter so your book reads like it was written by a pro.', 0),
       ('Service 02', '📐', 'Book Formatting and Design', 'Convert your manuscript into a professional, publish-ready book. Proper typography, layout, chapter design, and cover guidance that meets Amazon KDP and major distributor standards.', 1),
       ('Service 03', '🚀', 'Amazon KDP Publishing Support', 'Help you upload and publish without rejection or confusion. Category selection, metadata optimization, pricing strategy, and full account setup so your book is live and discoverable.', 2),
       ('Service 04', '💡', 'Book Sales Page and Positioning', 'A compelling sales page that explains your book clearly so readers understand and buy it. Persuasive description, keywords, and positioning that converts visitors into buyers.', 3),
-      ('Service 05', '📈', 'Book & Ebook Platform-Based Campaign', 'Promote your book right where readers are buying — on the self-publishing platforms themselves. I set up and manage in-platform ad campaigns like Amazon KDP Ads, Lulu Marketplace Ads, and IngramSpark Ads, putting your book and ebook in front of ready-to-buy audiences to boost visibility, reviews, and sales.', 4),
+      ('Service 05', '📈', 'Book & Ebook Platform-Based Campaign', 'Promote your book right where readers are buying, on the self-publishing platforms themselves. I set up and manage in-platform ad campaigns like Amazon KDP Ads, Lulu Marketplace Ads, and IngramSpark Ads, putting your book and ebook in front of ready-to-buy audiences to boost visibility, reviews, and sales.', 4),
       ('Service 06', '📣', 'Social Media Ads Campaign', 'Create and manage targeted ad campaigns to promote your book, increase visibility, and attract the right readers online. From audience targeting to ad copy and creative, every campaign is built to convert browsers into buyers.', 5);
   end if;
 end $$;
@@ -128,15 +128,15 @@ begin
     insert into faqs (question, answer, sort_order) values
       ('How long does each package take?', 'It depends on scope. Formatting and cover projects typically take 3–7 days. Full ghostwriting and publishing packages run 3–8 weeks. You''ll get a clear, realistic timeline during your free discovery call before any commitment.', 0),
       ('What do you need from me to get started?', 'Just your manuscript or idea, any notes or references you have, and a short brief on your goals and audience. If you''re starting from scratch, we''ll map it out together on the discovery call.', 1),
-      ('Do I own full rights to the finished book?', 'Yes — 100%. You are the sole author and copyright owner of every manuscript, cover, and file I deliver. I never claim credit or reuse your work anywhere.', 2),
-      ('Will my name be the only author listed?', 'Absolutely. Ghostwriting is fully confidential — your name is the only one on the book. I remain completely behind the scenes.', 3),
+      ('Do I own full rights to the finished book?', 'Yes, 100%. You are the sole author and copyright owner of every manuscript, cover, and file I deliver. I never claim credit or reuse your work anywhere.', 2),
+      ('Will my name be the only author listed?', 'Absolutely. Ghostwriting is fully confidential, your name is the only one on the book. I remain completely behind the scenes.', 3),
       ('What if I''m not happy with a draft?', 'Every package includes revisions so we refine the work until it matches your vision. If we haven''t started work yet, you''re entitled to a full refund. Nobody gets left with something they don''t love.', 4),
-      ('What file formats do I receive?', 'You get the formats you need to publish and share: editable Word (.docx), print-ready PDF, and ePub for eBooks — all delivered ready for Amazon KDP and IngramSpark.', 5),
+      ('What file formats do I receive?', 'You get the formats you need to publish and share: editable Word (.docx), print-ready PDF, and ePub for eBooks, all delivered ready for Amazon KDP and IngramSpark.', 5),
       ('Do you help if KDP or IngramSpark rejects my file?', 'Yes. If a platform rejects a file I formatted, I fix it and re-submit at no extra cost. You''re never left troubleshooting uploads on your own.', 6),
       ('Can I pick up a partially finished manuscript?', 'Definitely. Whether you have three chapters or a rough outline, I can step in mid-project, match your voice, and carry it through to a finished, published book.', 7),
       ('Do you sign an NDA and keep my story confidential?', 'Yes. Your story stays private, and I''m happy to sign an NDA before we begin so your ideas are protected in writing from day one.', 8),
       ('What currencies and payment methods do you accept?', 'All currencies are accepted. Prices are shown in USD, but you can pay the equivalent amount in your local currency (NGN, GBP, EUR, CAD and more) through Fiverr''s secure checkout or by direct arrangement.', 9),
-      ('Can I see samples before I commit?', 'Of course. Browse the portfolio section above for real book covers, interior layouts, and KDP projects — and I''m happy to share more relevant samples on your discovery call.', 10),
+      ('Can I see samples before I commit?', 'Of course. Browse the portfolio section above for real book covers, interior layouts, and KDP projects, and I''m happy to share more relevant samples on your discovery call.', 10),
       ('Is the discovery call free, and am I obligated to anything?', 'The discovery call is completely free with zero obligation. It''s simply a chance to talk through your book, get honest advice, and see if we''re a good fit.', 11);
   end if;
 end $$;
@@ -158,7 +158,7 @@ begin
   if not exists (select 1 from authors) then
     insert into authors (name, country, bio, image_url, book_url, contact_url, sort_order) values
       ('Rima Danielle Jomaa', '🇺🇸 United States', 'Author of a life-changing self-help book, now live and selling on Amazon after we brought her manuscript from draft to published reality.', 'authors/author1.jpg', '#', '#', 0),
-      ('Chere Curtis Wood', '🇺🇸 United States', 'A first-time author in the Christian book space, Chere brought her faith-driven message to life and into print — guided from manuscript to a beautifully published book ready for readers.', 'images/pic-4a254a2561.jpg', '#', 'https://www.linkedin.com/in/chere-curtis-wood-a8308438b/', 1),
+      ('Chere Curtis Wood', '🇺🇸 United States', 'A first-time author in the Christian book space, Chere brought her faith-driven message to life and into print, guided from manuscript to a beautifully published book ready for readers.', 'images/pic-4a254a2561.jpg', '#', 'https://www.linkedin.com/in/chere-curtis-wood-a8308438b/', 1),
       ('Obembe Akinlolu', '🇳🇬 Nigeria', 'Nigerian entrepreneur, network marketer, and CEO of (FHG) Eagles Team and Truevitalhealthcare. Best-selling author of "Discover Why Your Team Isn''t Growing: How Smart Leaders Stop Wasting Effort," alongside his published work "Overcoming Osteoporosis."', 'images/pic-a077f2ef7b.jpg', 'https://selar.com/m/ObembeAkinloluwa', 'https://ng.linkedin.com/in/obembeakinloluwa', 2);
   end if;
 end $$;

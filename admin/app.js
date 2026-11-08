@@ -1,4 +1,4 @@
-/* Olamilekanwaliu CMS — dashboard logic */
+/* Olamilekanwaliu CMS ,  dashboard logic */
 (function(){
   var cfg=window.CMS_CONFIG||{};
   if(!cfg.SUPABASE_URL || cfg.SUPABASE_URL.indexOf('YOUR-PROJECT')>-1){
@@ -95,7 +95,7 @@
       html+='<div class="row'+(row.published===false?' hidden-row':'')+'">'
         +'<div class="ord"><button data-up="'+idx+'">▲</button><button data-down="'+idx+'">▼</button></div>'
         +thumb
-        +'<div class="row-main"><div class="row-title">'+esc(title)+(row.published===false?' — <i>hidden</i>':'')+'</div>'
+        +'<div class="row-main"><div class="row-title">'+esc(title)+(row.published===false?' ,  <i>hidden</i>':'')+'</div>'
         +'<div class="row-sub">'+esc(sub)+'</div>'+tag+'</div>'
         +'<div class="row-actions"><button class="btn btn-ghost btn-sm" data-edit="'+idx+'">Edit</button>'
         +'<button class="btn btn-danger btn-sm" data-del="'+idx+'">Delete</button></div></div>';
