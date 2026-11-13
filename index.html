@@ -1227,7 +1227,7 @@
     }
     .footer-logo .logo-o { font-size: 22px; }
     .footer-logo .logo-rest { font-size: 16px; color: rgba(253,250,245,0.7); }
-    .footer-links { display: flex; gap: 24px; }
+    .footer-links { display: flex; flex-wrap: wrap; gap: 24px; }
     .footer-links a { font-size: 13px; color: rgba(253,250,245,0.4); text-decoration: none; transition: color 0.2s; }
     .footer-links a:hover { color: rgba(253,250,245,0.8); }
     .footer-bottom {
@@ -1269,6 +1269,7 @@
       .pricing-grid { grid-template-columns: 1fr; max-width: 440px; margin-left: auto; margin-right: auto; }
       .contact-grid { grid-template-columns: 1fr; gap: 32px; }
       .form-row { grid-template-columns: 1fr; }
+      .footer-links { justify-content: center; }
     }
     @media (max-width: 480px) {
       .stats-strip { grid-template-columns: 1fr; }
